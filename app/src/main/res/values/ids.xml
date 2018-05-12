@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 二维码 -->
+    <item name="bgaqrcode_camera_preview" type="id" />
+
+    <!-- holder -->
+    <item name="holder_pos" type="id" />
+    <item name="holder_value1" type="id" />
+    <item name="holder_value2" type="id" />
+    <item name="holder_value3" type="id" />
+    <item name="holder_value4" type="id" />
+    <item name="holder_value5" type="id" />
+
+    <item name="node_header" type="id" />
+    <item name="node_items" type="id" />
+    <item name="tree_items" type="id" />
+</resources>

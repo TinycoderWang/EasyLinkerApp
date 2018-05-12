@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/login_bg"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+
+    <!-- 注册 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:fontFamily="monospace"
+        android:gravity="center_horizontal"
+        android:text="@string/register_title"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"/>
+
+
+    <!-- 用户名 -->
+    <EditText
+        android:id="@+id/et_user_name"
+        style="@style/register_edittext_style"
+        android:drawableLeft="@drawable/ic_login_user_name"
+        android:hint="@string/register_name_hint"
+        android:imeOptions="actionNext"
+        android:inputType="textVisiblePassword"
+        android:nextFocusDown="@+id/et_password"/>
+
+
+    <!-- 密码 -->
+    <wang.tinycoder.easylinkerapp.widget.PasswordEditText
+        android:id="@+id/et_password"
+        style="@style/register_edittext_style"
+        android:drawableLeft="@drawable/ic_login_password"
+        android:hint="@string/register_password_hint"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@+id/et_re_password"/>
+
+    <!-- 密码 -->
+    <wang.tinycoder.easylinkerapp.widget.PasswordEditText
+        android:id="@+id/et_re_password"
+        style="@style/register_edittext_style"
+        android:drawableLeft="@drawable/ic_login_password"
+        android:hint="@string/register_re_password_hint"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@+id/et_phone"/>
+
+
+    <!-- 电话 -->
+    <EditText
+        android:id="@+id/et_phone"
+        style="@style/register_edittext_style"
+        android:drawableLeft="@drawable/ic_phone"
+        android:hint="@string/register_phone_hint"
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:nextFocusDown="@+id/et_email"/>
+
+
+    <!-- 邮箱 -->
+    <EditText
+        android:id="@+id/et_email"
+        style="@style/register_edittext_style"
+        android:drawableLeft="@drawable/ic_email"
+        android:hint="@string/register_email_hint"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"/>
+
+    <!-- 注册 -->
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_30"
+        android:padding="@dimen/dp_1"
+        android:text="@string/btn_register"
+        android:textSize="@dimen/sp_20"/>
+
+</LinearLayout>

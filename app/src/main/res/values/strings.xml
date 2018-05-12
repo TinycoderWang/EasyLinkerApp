@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">EasyLinkerApp</string>
+    <string name="user_name_hint">用户名</string>
+    <string name="user_password_hint">密码</string>
+    <string name="btn_login">登        陆</string>
+    <string name="register">立即注册</string>
+    <string name="login_title">EasyLinker</string>
+    <string name="register_title">用户注册</string>
+    <string name="btn_register">注       册</string>
+    <string name="register_name_hint">用户名</string>
+    <string name="register_password_hint">密码</string>
+    <string name="register_re_password_hint">确认密码</string>
+    <string name="register_phone_hint">手机号码</string>
+    <string name="register_email_hint">邮箱</string>
+    <string name="tab_dev_manage">设备管理</string>
+    <string name="tab_sys_state">系统状态</string>
+    <string name="tab_my">个人设置</string>
+    <string name="add_dev_name_hint">群组名称(必须为英文数字组合，不低于6位)</string>
+    <string name="add_dev_desc_hint">群组备注信息</string>
+    <string name="logout">退出登录</string>
+    <string name="send">发送</string>
+    <string name="send_msg_hint">请输入指令,如 { title : cmd , msg : hello } </string>
+</resources>

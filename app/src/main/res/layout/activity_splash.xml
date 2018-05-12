@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    >
+
+    <!-- 提示 -->
+    <yanzhikai.textpath.AsyncTextPathView
+        android:id="@+id/tpv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_180"
+        android:layerType="software"
+        app:pathStrokeColor="@color/text_white"
+        app:showPainter="false"
+        app:text="EasyLinker"
+        app:textInCenter="true"
+        app:textSize="@dimen/dp_48"
+        />
+
+    <yanzhikai.textpath.AsyncTextPathView
+        android:id="@+id/tpv_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tpv_name"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layerType="software"
+        app:pathStrokeColor="@color/text_white"
+        app:showPainter="false"
+        app:text="让物联更简单"
+        app:textInCenter="true"
+        app:textSize="@dimen/dp_42"
+        />
+
+    <!-- 版本 -->
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/dp_16"
+        android:textStyle="bold"
+        tools:text="V 1.0.0"
+        />
+
+
+</RelativeLayout>

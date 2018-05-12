@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 标题 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        >
+
+        <!-- 组名称 -->
+        <TextView
+            android:id="@+id/tv_group_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"
+            tools:text="设备组1"
+            />
+
+
+        <!-- 扫描二维码 -->
+        <TextView
+            android:id="@+id/tv_bind"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:drawableLeft="@drawable/ic_qr_scan"
+            android:drawablePadding="@dimen/dp_6"
+            android:gravity="center"
+            android:text="绑定\n设备"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            />
+
+    </LinearLayout>
+
+
+    <!-- 设备列表 -->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="true"
+        app:srlEnableRefresh="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_dev_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"></android.support.v7.widget.RecyclerView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <!-- 提示信息的view -->
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="@dimen/dp_18"
+        android:visibility="gone"/>
+
+</LinearLayout>

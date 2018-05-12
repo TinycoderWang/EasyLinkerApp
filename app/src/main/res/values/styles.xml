@@ -1,0 +1,100 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/nomal_text_color</item>
+    </style>
+
+    <!-- 登录的EditText样式 -->
+    <style name="login_edittext_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_42</item>
+        <item name="android:layout_marginLeft">@dimen/dp_30</item>
+        <item name="android:layout_marginRight">@dimen/dp_30</item>
+        <item name="android:background">@drawable/white_round_et_bg</item>
+        <item name="android:drawablePadding">@dimen/dp_10</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <!-- 注册的EditText样式 -->
+    <style name="register_edittext_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_42</item>
+        <item name="android:layout_marginLeft">@dimen/dp_30</item>
+        <item name="android:layout_marginRight">@dimen/dp_30</item>
+        <item name="android:layout_marginTop">@dimen/dp_30</item>
+        <item name="android:background">@drawable/white_round_et_bg</item>
+        <item name="android:drawablePadding">@dimen/dp_10</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+
+    <!-- 首页底部导航的样式 -->
+    <style name="home_tab_text_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dp_2</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/dp_10</item>
+    </style>
+
+    <!-- 首页底部导航的样式 -->
+    <style name="home_tab_rb_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dp_2</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/dp_10</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/home_tab_text_color</item>
+    </style>
+
+    <!-- 树的缩进 -->
+    <style name="TreeNodeStyle">
+        <item name="android:paddingLeft">@dimen/dp_16</item>
+    </style>
+
+
+    <style name="txt_lab" parent="TextAppearance.AppCompat">
+        <!-- 默认状态提示颜色和字体-->
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">@dimen/dp_14</item>
+        <!-- 下面可以根据需要设置，如果没有将默认使用默认theme的颜色 -->
+        <!-- Label标签的颜色 -->
+        <item name="colorAccent">@color/gray</item>
+        <!-- 默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <!-- 选择的底线颜色 -->
+        <item name="colorControlActivated">@color/tab_blue</item>
+    </style>
+
+    <style name="AutoWrapTv">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/tab_blue</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+</resources>

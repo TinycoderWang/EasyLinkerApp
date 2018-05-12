@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="horizontal"--><!--android:paddingBottom="@dimen/dp_2"--><!--android:paddingTop="@dimen/dp_2"--><!--android:visibility="gone">-->
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp_2"
+    android:paddingTop="@dimen/dp_2">
+
+    <!-- 设备管理 -->
+    <RadioButton
+        android:id="@+id/rb_dev_manage"
+        style="@style/home_tab_rb_style"
+        android:checked="true"
+        android:drawableTop="@drawable/dev_manage_selector"
+        android:text="@string/tab_dev_manage" />
+
+    <!-- 系统状态 -->
+    <RadioButton
+        android:id="@+id/rb_sys_state"
+        style="@style/home_tab_rb_style"
+        android:drawableTop="@drawable/sys_state_selector"
+        android:text="@string/tab_sys_state" />
+
+
+    <!-- 系统状态 -->
+    <RadioButton
+        android:id="@+id/rb_my_setting"
+        style="@style/home_tab_rb_style"
+        android:drawableTop="@drawable/my_setting_selector"
+        android:text="@string/tab_my" />
+
+
+</RadioGroup><!--&lt;!&ndash; 设备管理 &ndash;&gt;--><!--<TextView--><!--android:id="@+id/tv_dev_manage"--><!--style="@style/home_tab_text_style"--><!--android:checked="true"--><!--android:drawableTop="@drawable/ic_dev_manage_en"--><!--android:text="@string/tab_dev_manage"--><!--android:textColor="@color/tab_blue" />-->
+
+    <!--&lt;!&ndash; 系统状态 &ndash;&gt;--><!--<TextView--><!--android:id="@+id/tv_sys_state"--><!--style="@style/home_tab_text_style"--><!--android:drawableTop="@drawable/ic_sys_state_dis"--><!--android:text="@string/tab_sys_state" />-->
+
+    <!--&lt;!&ndash; 系统状态 &ndash;&gt;--><!--<TextView--><!--android:id="@+id/tv_my_setting"--><!--style="@style/home_tab_text_style"--><!--android:drawableTop="@drawable/ic_my_dis"--><!--android:text="@string/tab_my" />-->
+
+    <!--</LinearLayout>-->

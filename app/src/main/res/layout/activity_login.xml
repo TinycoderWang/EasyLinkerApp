@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/login_bg"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="@string/login_title"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/dp_30"
+        android:textStyle="bold"/>
+
+
+    <!-- 用户名 -->
+    <EditText
+        android:id="@+id/et_user_name"
+        style="@style/login_edittext_style"
+        android:drawableLeft="@drawable/ic_login_user_name"
+        android:hint="@string/user_name_hint"
+        android:imeOptions="actionNext"
+        android:inputType="textVisiblePassword"
+        android:nextFocusDown="@+id/et_password"/>
+
+    <!-- 密码 -->
+    <wang.tinycoder.easylinkerapp.widget.PasswordEditText
+        android:id="@+id/et_password"
+        style="@style/login_edittext_style"
+        android:layout_marginTop="@dimen/dp_30"
+        android:drawableLeft="@drawable/ic_login_password"
+        android:hint="@string/user_password_hint"
+        android:imeOptions="actionDone"/>
+
+    <!-- 登陆 -->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_30"
+        android:padding="@dimen/dp_1"
+        android:text="@string/btn_login"
+        android:textSize="@dimen/sp_24"/>
+
+    <!-- 注册 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_42"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="记住状态"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/sp_16"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_4"
+            android:text="@string/register"
+            android:textColor="@color/login_register_text_color"
+            android:textSize="@dimen/sp_16"
+            />
+
+    </LinearLayout>
+
+
+    <!-- 版本 -->
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="12dp"
+        android:textColor="@color/text_white"
+        android:textSize="16dp"
+        tools:text="V 1.0.0"/>
+
+
+</LinearLayout>

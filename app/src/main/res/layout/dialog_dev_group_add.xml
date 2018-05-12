@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="新增分组"
+        android:textSize="@dimen/dp_18"
+        android:textStyle="bold" />
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@color/gray" />
+
+    <!-- 群组名称 -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_58"
+        android:theme="@style/txt_lab">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_group_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:hint="@string/add_dev_name_hint"
+            android:inputType="text"
+            android:textSize="@dimen/dp_16" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- 群组名称 -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_58"
+        android:theme="@style/txt_lab">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_group_desc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:hint="@string/add_dev_desc_hint"
+            android:inputType="text"
+            android:textSize="@dimen/dp_16" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <!-- 按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginTop="@dimen/dp_4"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- 取消 -->
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:background="@drawable/cancle_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8" />
+
+        <!-- 确定 -->
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:background="@drawable/sure_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

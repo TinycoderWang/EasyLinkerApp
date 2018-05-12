@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_10">
+
+
+    <!-- 编辑 -->
+    <LinearLayout
+        android:id="@+id/ll_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_6">
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:src="@drawable/ic_edit_dis" />
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:text="编辑"
+            android:textSize="@dimen/dp_16" />
+
+    </LinearLayout>
+
+
+    <!-- 头像 -->
+    <wang.tinycoder.easylinkerapp.widget.CircleImageView
+        android:id="@+id/iv_header"
+        android:layout_width="@dimen/dp_68"
+        android:layout_height="@dimen/dp_68"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:src="@drawable/ic_header_default"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="@dimen/dp_2" />
+
+    <!-- 名称 -->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_80"
+        android:layout_marginTop="@dimen/dp_18"
+        android:layout_toRightOf="@+id/iv_header"
+        android:gravity="left"
+        android:textSize="@dimen/sp_16"
+        tools:text="名字" />
+
+    <!-- 签名 -->
+    <EditText
+        android:id="@+id/et_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_toRightOf="@+id/iv_header"
+        android:background="@null"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="left"
+        android:textColor="@color/nomal_text_color"
+        android:textSize="@dimen/sp_14"
+        tools:text="签名：名字" />
+
+    <!-- 分割 -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_12"
+        android:layout_below="@+id/iv_header"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/gray" />
+
+
+    <!-- 手机 -->
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机："
+            android:textSize="@dimen/dp_16" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/my_setting_et_bg"
+            android:enabled="false"
+            android:focusable="false"
+            android:inputType="phone"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:singleLine="true"
+            android:textColor="@color/nomal_text_color"
+            android:textSize="@dimen/dp_16" />
+
+
+    </LinearLayout>
+
+    <!-- 邮箱 -->
+    <LinearLayout
+        android:id="@+id/ll_email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_below="@+id/ll_phone"
+        android:layout_marginTop="@dimen/dp_18"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邮箱："
+            android:textSize="@dimen/dp_16" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/my_setting_et_bg"
+            android:enabled="false"
+            android:focusable="false"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:singleLine="true"
+            android:textColor="@color/nomal_text_color"
+            android:textSize="@dimen/dp_16" />
+
+
+    </LinearLayout>
+
+
+    <!-- 推出登陆 -->
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_42"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/logout_bg"
+        android:gravity="center"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_16" />
+
+</RelativeLayout>

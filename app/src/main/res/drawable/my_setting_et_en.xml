@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">--><!--<item>--><!--<shape>--><!--<solid android:color="@color/red_btn_bg_color" />--><!--</shape>--><!--</item>--><!--<item android:bottom="2dp"> &lt;!&ndash;设置只有底部有边框&ndash;&gt;--><!--<shape>--><!--<solid android:color="@color/soft_gray" />--><!--</shape>--><!--</item>--><!--</layer-list>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="@dimen/dp_2"
+        android:gravity="bottom">
+        <shape>
+            <solid android:color="@color/tab_blue" />
+        </shape>
+    </item>
+</layer-list>

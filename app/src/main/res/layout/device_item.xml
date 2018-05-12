@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp_6"
+    android:paddingTop="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_4">
+
+        <!-- 设备名称 -->
+        <TextView
+            android:id="@+id/tv_dev_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:textSize="@dimen/sp_16"
+            tools:text="设备名称" />
+
+        <!-- 在线状态 -->
+        <TextView
+            android:id="@+id/tv_online_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="状态:"
+            android:textSize="@dimen/dp_13" />
+
+        <ImageView
+            android:id="@+id/iv_online_state"
+            android:layout_width="@dimen/dp_12"
+            android:layout_height="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:src="@drawable/red_dot" />
+
+    </LinearLayout>
+
+    <!-- 描述 -->
+    <TextView
+        android:id="@+id/tv_dev_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_4"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/dp_16"
+        tools:text="备注:" />
+
+    <!-- 位置 -->
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingBottom="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_4"
+        android:textSize="@dimen/dp_14"
+        tools:text="位置:不知道在哪" />
+
+
+    <!-- 最后操作时间 -->
+    <TextView
+        android:id="@+id/tv_last_active_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_4"
+        android:textSize="@dimen/dp_14"
+        tools:text="最后活跃时间:" />
+
+
+    <!-- 发送指令 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_command"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gray_fram_bg"
+            android:hint="@string/send_msg_hint"
+            android:paddingBottom="@dimen/dp_6"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_6"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:textColor="@color/nomal_text_color"
+            android:textSize="@dimen/dp_14" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:background="@drawable/send_bg"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dp_6"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_6"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
