@@ -1,10 +1,10 @@
 # EasyLinkerApp
 为 [EasyLinker](https://github.com/wwhai/EasyLinker "EasyLinker") 配套的Android应用！ 
 
-![](http://octklz398.bkt.clouddn.com/Screenshot_1526087192.png)  
-![](http://octklz398.bkt.clouddn.com/Screenshot_1526088281.png)  
-![](http://octklz398.bkt.clouddn.com/Screenshot_1526087401.png)  
-![](http://octklz398.bkt.clouddn.com/Screenshot_1526087701.png)
+<img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526087192.png"/>
+<img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526088281.png"/>
+<img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526087401.png"/>
+<img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526087701.png"/>
 
 (暂时功能比较简单，仅包含普通用户的部分功能)
  
