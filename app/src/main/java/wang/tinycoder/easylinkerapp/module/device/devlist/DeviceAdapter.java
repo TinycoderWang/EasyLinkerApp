@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -66,9 +67,18 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.Holder> {
                 lastActiveDate = lastActiveDate.substring(0, sub > 0 ? sub : lastActiveDate.length());
             }
             holder.mTvLastActiveTime.setText(String.format("最后操作：%s", TextUtils.isEmpty(lastActiveDate) ? "未知" : lastActiveDate));
+            // 箭头方向
+            if (holder.mLlCommand.getVisibility() == View.VISIBLE) {
+                holder.mIvCommandShow.setImageResource(R.drawable.ic_arrow_up);
+            } else {
+                holder.mIvCommandShow.setImageResource(R.drawable.ic_arrow_down);
+            }
             // 点击事件
             holder.itemView.setTag(R.id.holder_pos, position);
             holder.itemView.setOnClickListener(clickListener);
+            holder.mIvCommandShow.setTag(R.id.holder_pos, position);
+            holder.mIvCommandShow.setTag(R.id.holder_value1, holder.mLlCommand);
+            holder.mIvCommandShow.setOnClickListener(clickListener);
             // 点击事件
             holder.mTvSend.setTag(R.id.holder_pos, position);
             holder.mTvSend.setTag(R.id.holder_value1, holder.mEtCommand);
@@ -97,6 +107,10 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.Holder> {
         ImageView mIvOnlineState;
         @BindView(R.id.tv_dev_desc)
         TextView mTvDevDesc;
+        @BindView(R.id.iv_command_show)
+        ImageView mIvCommandShow;
+        @BindView(R.id.ll_command)
+        LinearLayout mLlCommand;
         @BindView(R.id.et_command)
         EditText mEtCommand;
         @BindView(R.id.tv_send)
@@ -130,6 +144,15 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.Holder> {
                         String command = etCommand.getText().toString().trim();
                         event = new DeviceEvent(pos, DeviceEvent.SEND_CLICK_TYPE, device, command);
                         RxBus.getIntanceBus().post(event);
+                    }
+                } else if (R.id.iv_command_show == v.getId()) {
+                    LinearLayout llCommand = (LinearLayout) v.getTag(R.id.holder_value1);
+                    if (llCommand.getVisibility() == View.VISIBLE) {
+                        llCommand.setVisibility(View.GONE);
+                        ((ImageView) v).setImageResource(R.drawable.ic_arrow_down);
+                    } else {
+                        llCommand.setVisibility(View.VISIBLE);
+                        ((ImageView) v).setImageResource(R.drawable.ic_arrow_up);
                     }
                 } else {
                     event = new DeviceEvent(pos, DeviceEvent.DEVICE_CLICK_TYPE, device);

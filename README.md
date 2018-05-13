@@ -11,7 +11,7 @@
 ---
 
 # Thanks For
----
+
 * 闪屏动画：[TextPathView](https://github.com/totond/TextPathView)  
 * 列表刷新、加载：[SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)  
 * 6.0权限处理：[RxPermissions](https://github.com/tbruyelle/RxPermissions)  
@@ -21,7 +21,6 @@
 ---
 
 # License
----
 
 Copyright 2018 TinycoderWang
 

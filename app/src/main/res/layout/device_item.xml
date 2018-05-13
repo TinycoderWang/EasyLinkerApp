@@ -78,45 +78,66 @@
         tools:text="最后活跃时间:" />
 
 
-    <!-- 发送指令 -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/et_command"
-            android:layout_width="0dp"
+        <!-- 显示、隐藏指令发送 -->
+        <ImageView
+            android:id="@+id/iv_command_show"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp_2"
+            android:paddingBottom="@dimen/dp_2"
+            android:src="@drawable/ic_arrow_down" />
+
+        <!-- 发送指令 -->
+        <LinearLayout
+            android:id="@+id/ll_command"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/gray_fram_bg"
-            android:hint="@string/send_msg_hint"
-            android:paddingBottom="@dimen/dp_6"
-            android:paddingLeft="@dimen/dp_8"
-            android:paddingRight="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_6"
-            android:lineSpacingExtra="@dimen/dp_4"
-            android:textColor="@color/nomal_text_color"
-            android:textSize="@dimen/dp_14" />
+            android:layout_below="@+id/iv_command_show"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tv_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:background="@drawable/send_bg"
-            android:gravity="center"
-            android:paddingBottom="@dimen/dp_6"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_6"
-            android:text="@string/send"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dp_14" />
+            <EditText
+                android:id="@+id/et_command"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_fram_bg"
+                android:hint="@string/send_msg_hint"
+                android:lineSpacingExtra="@dimen/dp_4"
+                android:paddingBottom="@dimen/dp_6"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_6"
+                android:textColor="@color/nomal_text_color"
+                android:textSize="@dimen/dp_14"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                />
 
+            <TextView
+                android:id="@+id/tv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:background="@drawable/send_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dp_6"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_6"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_14" />
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
