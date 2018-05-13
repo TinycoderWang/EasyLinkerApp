@@ -1,6 +1,7 @@
 package wang.tinycoder.easylinkerapp.module.home;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.FrameLayout;
@@ -17,6 +18,7 @@ import io.reactivex.functions.Consumer;
 import wang.tinycoder.easylinkerapp.R;
 import wang.tinycoder.easylinkerapp.base.BaseActivity;
 import wang.tinycoder.easylinkerapp.module.home.fragment.HomeFragmentFactory;
+import wang.tinycoder.easylinkerapp.module.login.LoginActivity;
 
 /**
  * @author WangYh
@@ -146,4 +148,10 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     }
 
+    @Override
+    public void cookieOverTime() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

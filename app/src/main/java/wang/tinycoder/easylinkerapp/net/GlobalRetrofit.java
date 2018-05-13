@@ -21,7 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import wang.tinycoder.easylinkerapp.app.Constants;
 import wang.tinycoder.easylinkerapp.bean.NetResult;
 import wang.tinycoder.easylinkerapp.bean.User;
+import wang.tinycoder.easylinkerapp.bean.event.CookieOverTime;
 import wang.tinycoder.easylinkerapp.net.cookie.CookieManager;
+import wang.tinycoder.easylinkerapp.util.RxBus;
 
 /**
  * Progect：EasyLinkerApp
@@ -79,6 +81,7 @@ public class GlobalRetrofit {
                 .addInterceptor(interceptor)
                 .addInterceptor(headerInterceptor)
                 //.addInterceptor(loginSaveCookieInterceptor)
+                .addInterceptor(cookieOverTime)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
@@ -97,6 +100,34 @@ public class GlobalRetrofit {
                     .addHeader(CONTENT_ACCEPT_NAME, CONTENT_TYPE_JSON)
                     .build();
             return chain.proceed(request);
+        }
+    };
+
+    // cookie过期的处理
+    private Interceptor cookieOverTime = new Interceptor() {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request().newBuilder()
+                    .build();
+            Response response = chain.proceed(request);
+            byte[] responseByte = response.body().bytes();
+            try {
+                String responseBody = new String(responseByte);
+                if (!TextUtils.isEmpty(responseBody)) {
+                    Gson gson = new Gson();
+                    NetResult<User> userNetResult = gson.fromJson(responseBody, NetResult.class);
+                    if (userNetResult.getState() == NetResult.FAILD && "只有经过登陆认证成功才能访问!".equals(userNetResult.getMessage())) {
+                        // cookie过期
+                        Logger.i("cookie Over Time!");
+                        CookieManager.getInstance().getCookieJar().cleanCookie();
+                        RxBus.getIntanceBus().post(new CookieOverTime());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // 在前面获取bytes的时候response的stream已经被关闭了,要重新生成response
+            return response.newBuilder().body(ResponseBody.create(null, responseByte)).build();
         }
     };
 

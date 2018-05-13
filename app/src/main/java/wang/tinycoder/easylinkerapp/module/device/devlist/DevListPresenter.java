@@ -203,37 +203,41 @@ public class DevListPresenter extends BasePresenter<DevListContract.View, DevLis
     public void sendCommandToDevice(String deviceId, String command) {
 
         // 处理command
-        try {
-            StringBuilder sb = new StringBuilder();
-            String[] commands = command.split(",");
-            if (commands != null) {
-                for (String item : commands) {
-                    String[] innerItem = item.split(":");
-                    if (innerItem != null) {
-                        sb.append("\"")
-                                .append(innerItem[0].trim())
-                                .append("\":")
-                                .append("\"")
-                                .append(innerItem[1].trim())
-                                .append("\"")
-                                .append(",");
+        if (command.startsWith("{") && command.endsWith("}")) {   // 用户自己输入的简单json内容（不支持嵌套）
+            try {
+                command = command.substring(1, command.length() - 1);
+                StringBuilder sb = new StringBuilder();
+                String[] commands = command.split(",");
+                if (commands != null) {
+                    for (String item : commands) {
+                        String[] innerItem = item.split(":");
+                        if (innerItem != null) {
+                            sb.append("\"")
+                                    .append(innerItem[0].trim())
+                                    .append("\":")
+                                    .append("\"")
+                                    .append(innerItem[1].trim())
+                                    .append("\"")
+                                    .append(",");
+                        }
                     }
+                    if (sb.length() > 0) {
+                        sb.deleteCharAt(sb.length() - 1);
+                    }
+                    command = sb.toString();
                 }
-                if (sb.length() > 0) {
-                    sb.deleteCharAt(sb.length() - 1);
-                }
-                command = sb.toString();
+                command = "{" + command + "}";
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                mView.showMessage("指令格式错误！");
+                return;
             }
-            if (!command.startsWith("{")) {
-                command = "{ " + command;
-            }
-            if (!command.endsWith("}")) {
-                command += " }";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            mView.showMessage("指令格式错误！");
-            return;
+        } else {   // 固定的cmd
+            StringBuilder sb = new StringBuilder("{\"cmd\":\"");
+            sb.append(command)
+                    .append("\"}");
+            command = sb.toString();
         }
 
 

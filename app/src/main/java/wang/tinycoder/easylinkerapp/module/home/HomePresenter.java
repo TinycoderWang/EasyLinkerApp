@@ -4,8 +4,10 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import io.reactivex.functions.Consumer;
 import wang.tinycoder.easylinkerapp.base.BaseFragment;
 import wang.tinycoder.easylinkerapp.base.BasePresenter;
+import wang.tinycoder.easylinkerapp.bean.event.CookieOverTime;
 
 /**
  * Progect：EasyLinkerAppNew
@@ -22,6 +24,12 @@ public class HomePresenter extends BasePresenter<HomeContract.View, HomeContract
 
     public HomePresenter(HomeContract.View rootView, HomeContract.Model model) {
         super(rootView, model);
+        registerRxBus(CookieOverTime.class, new Consumer<CookieOverTime>() {
+            @Override
+            public void accept(CookieOverTime cookieOverTime) throws Exception {
+                mView.cookieOverTime();
+            }
+        });
     }
 
 

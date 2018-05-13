@@ -77,7 +77,7 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
         }
 
         // 设置群组名称
-        mTvGroupName.setText(mGroup.getName());
+        mTvGroupName.setText(String.format("%s(%s)", mGroup.getName(), mGroup.getComment()));
 
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRcvDevList.setLayoutManager(mLayoutManager);

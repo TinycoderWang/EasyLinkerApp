@@ -19,5 +19,5 @@
     <string name="add_dev_desc_hint">群组备注信息</string>
     <string name="logout">退出登录</string>
     <string name="send">发送</string>
-    <string name="send_msg_hint">请输入指令,如 { title : cmd , msg : hello } </string>
+    <string name="send_msg_hint">请输入您要发送的指令,如 1010 </string>
 </resources>

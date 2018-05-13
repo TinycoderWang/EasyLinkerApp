@@ -9,8 +9,7 @@ package wang.tinycoder.easylinkerapp.app;
  */
 public class Constants {
 
-    // 服务器地址
-//    public static final String BASE_URL = "http://120.79.204.129:2500/";
+    // 服务器地址·
     public static final String BASE_URL = "http://116.196.90.9:2500/";
     public static final String BASE_HOST = "http://116.196.90.9/";
     // sp名称

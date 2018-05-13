@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/login_bg"
-              android:fitsSystemWindows="true"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
 
     <TextView
@@ -18,7 +18,7 @@
         android:text="@string/login_title"
         android:textColor="@color/text_white"
         android:textSize="@dimen/dp_30"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <!-- 用户名 -->
@@ -29,7 +29,8 @@
         android:hint="@string/user_name_hint"
         android:imeOptions="actionNext"
         android:inputType="textVisiblePassword"
-        android:nextFocusDown="@+id/et_password"/>
+        android:nextFocusDown="@+id/et_password"
+        android:text="tinycoder" />
 
     <!-- 密码 -->
     <wang.tinycoder.easylinkerapp.widget.PasswordEditText
@@ -38,7 +39,8 @@
         android:layout_marginTop="@dimen/dp_30"
         android:drawableLeft="@drawable/ic_login_password"
         android:hint="@string/user_password_hint"
-        android:imeOptions="actionDone"/>
+        android:imeOptions="actionDone"
+        android:text="tinycoder" />
 
     <!-- 登陆 -->
     <Button
@@ -50,7 +52,7 @@
         android:layout_marginTop="@dimen/dp_30"
         android:padding="@dimen/dp_1"
         android:text="@string/btn_login"
-        android:textSize="@dimen/sp_24"/>
+        android:textSize="@dimen/sp_24" />
 
     <!-- 注册 -->
     <LinearLayout
@@ -68,12 +70,12 @@
             android:layout_height="match_parent"
             android:text="记住状态"
             android:textColor="@color/text_white"
-            android:textSize="@dimen/sp_16"/>
+            android:textSize="@dimen/sp_16" />
 
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tv_register"
@@ -85,8 +87,7 @@
             android:paddingRight="@dimen/dp_4"
             android:text="@string/register"
             android:textColor="@color/login_register_text_color"
-            android:textSize="@dimen/sp_16"
-            />
+            android:textSize="@dimen/sp_16" />
 
     </LinearLayout>
 
@@ -101,7 +102,7 @@
         android:paddingBottom="12dp"
         android:textColor="@color/text_white"
         android:textSize="16dp"
-        tools:text="V 1.0.0"/>
+        tools:text="V 1.0.0" />
 
 
 </LinearLayout>

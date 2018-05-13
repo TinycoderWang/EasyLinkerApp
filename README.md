@@ -10,7 +10,7 @@
 
 ---
 
-###Thanks For
+# Thanks For
 ---
 * 闪屏动画：[TextPathView](https://github.com/totond/TextPathView)  
 * 列表刷新、加载：[SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)  
@@ -22,6 +22,7 @@
 
 # License
 ---
+
 Copyright 2018 TinycoderWang
 
 Licensed under the Apache License, Version 2.0 (the "License");

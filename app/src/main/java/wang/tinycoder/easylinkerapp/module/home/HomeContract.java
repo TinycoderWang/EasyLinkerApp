@@ -14,6 +14,7 @@ public interface HomeContract {
 
     interface View extends IView {
 
+        void cookieOverTime();
     }
 
     interface Model extends IModel {
