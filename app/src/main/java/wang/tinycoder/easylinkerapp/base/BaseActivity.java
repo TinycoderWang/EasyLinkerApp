@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import wang.tinycoder.easylinkerapp.app.AtyContainer;
 import wang.tinycoder.easylinkerapp.base.interfaces.IActivity;
 import wang.tinycoder.easylinkerapp.base.interfaces.IPresenter;
 
@@ -35,6 +36,8 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        // 保存当前activity
+        AtyContainer.getInstance().addActivity(this);
         initPresenter();
         //绑定到butterknife
         mUnbinder = ButterKnife.bind(this);
@@ -44,7 +47,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        AtyContainer.getInstance().removeActivity(this);
         if (mUnbinder != null && mUnbinder != Unbinder.EMPTY) {
             mUnbinder.unbind();
         }
@@ -53,7 +56,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             mPresenter.onDestroy();//释放资源
         }
         this.mPresenter = null;
-
+        super.onDestroy();
     }
 
     @Override

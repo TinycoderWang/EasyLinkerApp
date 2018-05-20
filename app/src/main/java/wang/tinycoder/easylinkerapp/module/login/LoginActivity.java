@@ -15,6 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import wang.tinycoder.easylinkerapp.R;
+import wang.tinycoder.easylinkerapp.app.AtyContainer;
 import wang.tinycoder.easylinkerapp.app.Constants;
 import wang.tinycoder.easylinkerapp.app.EasyLinkerApp;
 import wang.tinycoder.easylinkerapp.base.BaseActivity;
@@ -49,6 +50,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private SharedPreferences sp;
     // 是否记住用户信息
     private boolean mIsRemember;
+    private boolean mCloseOther;
 
     @Override
     public int getLayoutId() {
@@ -58,6 +60,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void initPresenter() {
         mPresenter = new LoginPresenter(this, new LoginModel());
+        mCloseOther = getIntent().getBooleanExtra(Constants.EXTRA_CLOSE_OTHER_ACTIVITY, false);
     }
 
     @Override
@@ -67,11 +70,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         mTvVersion.setText(EasyLinkerApp.getInstance().getVerName());
         mIsRemember = sp.getBoolean(Constants.REMEMBER_USER_STATE, false);
         mCbRemember.setChecked(mIsRemember);
+        if (mCloseOther) {
+            AtyContainer.getInstance().finishOtherActivity(this);
+        }
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        
+
     }
 
 

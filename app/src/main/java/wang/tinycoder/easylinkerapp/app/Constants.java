@@ -20,4 +20,6 @@ public class Constants {
     public static final String EXTRA_GROUP_BEAN = "extra_group_bean";
     // 群组id
     public static final String EXTRA_GROUP_ID = "extra_group_id";
+    // 是否关闭其他activity
+    public static final String EXTRA_CLOSE_OTHER_ACTIVITY = "extra_close_other_activity";
 }

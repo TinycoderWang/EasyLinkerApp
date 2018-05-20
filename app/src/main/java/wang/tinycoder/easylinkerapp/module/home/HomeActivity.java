@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.OnCheckedChanged;
 import io.reactivex.functions.Consumer;
 import wang.tinycoder.easylinkerapp.R;
+import wang.tinycoder.easylinkerapp.app.Constants;
 import wang.tinycoder.easylinkerapp.base.BaseActivity;
 import wang.tinycoder.easylinkerapp.module.home.fragment.HomeFragmentFactory;
 import wang.tinycoder.easylinkerapp.module.login.LoginActivity;
@@ -151,6 +152,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     @Override
     public void cookieOverTime() {
         Intent intent = new Intent(this, LoginActivity.class);
+        intent.putExtra(Constants.EXTRA_CLOSE_OTHER_ACTIVITY,true);
         startActivity(intent);
         finish();
     }
