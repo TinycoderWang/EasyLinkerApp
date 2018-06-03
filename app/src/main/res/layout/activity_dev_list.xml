@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <!-- 标题 -->
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <!-- 组名称 -->
-        <TextView
-            android:id="@+id/tv_group_name"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_15"
-            tools:text="设备组1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <!-- 组名称 -->
+            <TextView
+                android:id="@+id/tv_group_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15"
+                tools:text="设备组1" />
 
 
-        <!-- 扫描二维码 -->
-        <TextView
-            android:id="@+id/tv_bind"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_10"
-            android:drawableLeft="@drawable/ic_qr_scan"
-            android:drawablePadding="@dimen/dp_6"
-            android:gravity="center"
-            android:text="绑定\n设备"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_11" />
+            <!-- 扫描二维码 -->
+            <TextView
+                android:id="@+id/tv_bind"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:drawableLeft="@drawable/ic_qr_scan"
+                android:drawablePadding="@dimen/dp_6"
+                android:gravity="center"
+                android:text="绑定\n设备"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_11" />
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
 
     <!-- 设备列表 -->
@@ -53,6 +60,7 @@
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:srlEnableLoadMore="true"
         app:srlEnableRefresh="true">
 
@@ -73,6 +81,20 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="@dimen/dp_18"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</LinearLayout>
+    <!-- 添加设备 -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/dp_18"
+        app:elevation="@dimen/dp_6"
+        android:src="@drawable/ic_add_white"
+        app:layout_behavior="wang.tinycoder.easylinkerapp.module.device.devlist.FabBottomInOutBehavior"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>

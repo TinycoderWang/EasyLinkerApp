@@ -15,9 +15,12 @@
     <string name="tab_dev_manage">设备管理</string>
     <string name="tab_sys_state">系统状态</string>
     <string name="tab_my">个人设置</string>
-    <string name="add_dev_name_hint">群组名称(必须为英文数字组合，不低于6位)</string>
-    <string name="add_dev_desc_hint">群组备注信息</string>
+    <string name="add_dev_group_name_hint">群组名称(必须为英文数字组合，不低于6位)</string>
+    <string name="add_dev_group_desc_hint">群组备注信息</string>
     <string name="logout">退出登录</string>
     <string name="send">发送</string>
     <string name="send_msg_hint">请输入您要发送的指令,如 1010 </string>
+    <string name="add_dev_name_hint">设备名称(必须为英文数字组合，不低于6位)</string>
+    <string name="add_dev_desc_hint">设备备注信息</string>
+    <string name="add_dev_location_hint">设备所在地名称</string>
 </resources>

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="新增分组"
+        android:text="添加设备"
         android:textSize="@dimen/dp_18"
         android:textStyle="bold" />
 
@@ -25,32 +25,47 @@
         android:layout_marginTop="@dimen/dp_8"
         android:background="@color/gray" />
 
-    <!-- 群组名称 -->
+    <!-- 设备名称 -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_58"
         android:theme="@style/txt_lab">
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_group_name"
+            android:id="@+id/et_dev_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_42"
-            android:hint="@string/add_dev_group_name_hint"
+            android:hint="@string/add_dev_name_hint"
             android:inputType="text"
             android:textSize="@dimen/dp_16" />
     </android.support.design.widget.TextInputLayout>
 
-    <!-- 群组描述 -->
+    <!-- 设备描述 -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_58"
         android:theme="@style/txt_lab">
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/et_group_desc"
+            android:id="@+id/et_dev_desc"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_42"
-            android:hint="@string/add_dev_group_desc_hint"
+            android:hint="@string/add_dev_desc_hint"
+            android:inputType="textPhonetic"
+            android:textSize="@dimen/dp_16" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- 设备所在地 -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_58"
+        android:theme="@style/txt_lab">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_dev_location"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:hint="@string/add_dev_location_hint"
             android:inputType="textPhonetic"
             android:textSize="@dimen/dp_16" />
     </android.support.design.widget.TextInputLayout>

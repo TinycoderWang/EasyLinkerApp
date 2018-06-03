@@ -1,5 +1,8 @@
 package wang.tinycoder.easylinkerapp.module.home.fragment.sys;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -16,9 +19,11 @@ import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.UiSettings;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.MyLocationStyle;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import wang.tinycoder.easylinkerapp.R;
+import wang.tinycoder.easylinkerapp.app.Constants;
 import wang.tinycoder.easylinkerapp.base.BaseFragment;
 import wang.tinycoder.easylinkerapp.bean.SystemState;
 import wang.tinycoder.easylinkerapp.util.SpannableStringUtils;
@@ -44,15 +49,15 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
     private UiSettings mUiSettings;
     //定位需要的数据
     LocationSource.OnLocationChangedListener mListener;
+    //声明AMapLocationClient类对象
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;
     //定位蓝点
     MyLocationStyle myLocationStyle;
 
-    //声明AMapLocationClient类对象
-    public AMapLocationClient mLocationClient = null;
     //声明定位回调监听器
     public AMapLocationListener mLocationListener = new AMapLocationListener() {
+        @SuppressLint("CommitPrefEdits")
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
             if (aMapLocation != null) {
@@ -77,12 +82,24 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
 //                    String cityCode = aMapLocation.getCityCode();//城市编码
 //                    String adCode = aMapLocation.getAdCode();//地区编码
 //                    String aoiName = aMapLocation.getAoiName();//获取当前定位点的AOI信息
-                    // 地图显示当前位置
 
+                    // 保存位置信息
+                    String city = aMapLocation.getCity();//城市信息
+                    double latitude = aMapLocation.getLatitude();//获取纬度
+                    double longitude = aMapLocation.getLongitude();//获取经度
+                    Logger.i("location : %s %f %f", city, latitude, longitude);
+                    SharedPreferences sp = mActivity.getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString(Constants.EXTRA_CITY_NAME, city);
+                    edit.putString(Constants.EXTRA_CITY_LONGITUDE, numExchangeToStr("E", longitude));
+                    edit.putString(Constants.EXTRA_CITY_LATITUDE, numExchangeToStr("N", latitude));
+                    edit.commit();
+
+                    // 地图显示当前位置
                     mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
                     // 停止定位
-                    mLocationClient.stopAssistantLocation();
-                    mLocationClient.stopLocation();
+                    mlocationClient.stopAssistantLocation();
+                    mlocationClient.stopLocation();
 
                 } else {
                     String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
@@ -92,6 +109,20 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
         }
 
     };
+
+    private String numExchangeToStr(String pre, double num) {
+
+        StringBuilder sb = new StringBuilder(pre);
+        // E116°23′29.52″
+        int du = (int) num;
+        sb.append(du).append("°");
+        float fenFloat = ((float) num - du) * 60;
+        int fen = (int) fenFloat;
+        sb.append(fen).append("′");
+        float miao = (fenFloat - fen) * 60;
+        sb.append(miao).append("″");
+        return sb.toString();
+    }
 
 
     @Override
@@ -221,9 +252,9 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
         if (mMapView != null) {
             mMapView.onDestroy();
         }
-        if (null != mLocationClient) {
-            mLocationClient.stopAssistantLocation();
-            mLocationClient.onDestroy();
+        if (null != mlocationClient) {
+            mlocationClient.stopAssistantLocation();
+            mlocationClient.onDestroy();
         }
     }
 
@@ -250,7 +281,9 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
             //设置定位参数
             mlocationClient.setLocationOption(mLocationOption);
             // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+            mLocationOption.setOnceLocation(false);
             // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+            mLocationOption.setInterval(1000*20);
             // 在定位结束后，在合适的生命周期调用onDestroy()方法
             // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
             mlocationClient.startLocation();//启动定位
@@ -259,9 +292,9 @@ public class SysStateFragment extends BaseFragment<SysStatePresenter> implements
 
     @Override
     public void deactivate() {
-        if (null != mLocationClient) {
-            mLocationClient.stopAssistantLocation();
-            mLocationClient.onDestroy();
+        if (null != mlocationClient) {
+            mlocationClient.stopAssistantLocation();
+            mlocationClient.onDestroy();
         }
     }
 

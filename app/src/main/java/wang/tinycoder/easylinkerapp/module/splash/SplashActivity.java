@@ -87,7 +87,9 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                mTpvName.showFillColorText();
+                if (mTpvName != null) {
+                    mTpvName.showFillColorText();
+                }
             }
         });
         mTpvName.startAnimation(0, 1);
@@ -97,7 +99,9 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                mTpvMsg.showFillColorText();
+                if (mTpvMsg != null) {
+                    mTpvMsg.showFillColorText();
+                }
             }
         });
         mTpvMsg.startAnimation(0, 1);
@@ -166,9 +170,13 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
                     // 延时剩余时间
                     SystemClock.sleep(DELAY_TIME - (end - start));
                     if (hasCookie) {
-                        mHandler.sendEmptyMessage(GOTO_HOME);
+                        if (mHandler != null) {
+                            mHandler.sendEmptyMessage(GOTO_HOME);
+                        }
                     } else {
-                        mHandler.sendEmptyMessage(GOTO_LOGIN);
+                        if (mHandler != null) {
+                            mHandler.sendEmptyMessage(GOTO_LOGIN);
+                        }
                     }
                 }
             }.start();
@@ -189,6 +197,14 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         } else {
             return false;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        mHandler.removeMessages(GOTO_HOME);
+        mHandler.removeMessages(GOTO_LOGIN);
+        mHandler = null;
+        super.onDestroy();
     }
 
     @Override

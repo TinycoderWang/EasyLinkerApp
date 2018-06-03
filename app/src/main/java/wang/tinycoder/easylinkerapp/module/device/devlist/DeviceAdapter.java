@@ -49,7 +49,8 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.Holder> {
             Device device = deviceData.get(position);
             // 名称
             String name = device.getName();
-            holder.mTvDevName.setText(TextUtils.isEmpty(name) ? "设备" : name);
+            String id = device.getId();
+            holder.mTvDevName.setText(String.format("%s(%s)",TextUtils.isEmpty(name) ? "设备" : name,TextUtils.isEmpty(id) ? "未知" : id));
             // 在线状态
             holder.mIvOnlineState.setImageResource(device.isOnline() ? R.drawable.green_dot : R.drawable.red_dot);
             // 描述

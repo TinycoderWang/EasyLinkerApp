@@ -1,5 +1,7 @@
 package wang.tinycoder.easylinkerapp.module.device.devlist;
 
+import android.text.TextUtils;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -60,4 +62,43 @@ public class DevListModel implements DevListContract.Model {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
+
+    @Override
+    public void createADevice(String groupId, String groupName, String deviceName, String deviceDesc, String locationDesc, String latitude, String longitude, Observer<NetResult> observer) {
+
+        // 将参数封装为json
+        StringBuilder sb = new StringBuilder("{");
+        sb.append("\"groupId\":\"")
+                .append(groupId)
+                .append("\",")
+                .append("\"deviceNamePrefix\":\"")
+                .append(groupName)
+                .append("\",")
+                .append("\"deviceName\":\"")
+                .append(deviceName)
+                .append("\",")
+                .append("\"deviceDescribe\":\"")
+                .append(deviceDesc)
+                .append("\",")
+                .append("\"locationDescribe\":\"")
+                .append(locationDesc)
+                .append("\",")
+                .append("\"latitude\":\"")
+                .append(TextUtils.isEmpty(latitude)?"N39°54′6.74″":latitude)
+                .append("\",")
+                .append("\"longitude\":\"")
+                .append(TextUtils.isEmpty(longitude)?"E116°23′29.52″":longitude)
+                .append("\"")
+                .append("}");
+        RequestBody requestBody = RequestBody.create(MediaType.parse("Content-Type, application/json"), sb.toString());
+
+        GlobalRetrofit.getInstance().getApi()
+                .createDevice(requestBody)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
 }

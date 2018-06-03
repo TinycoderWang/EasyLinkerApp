@@ -1,8 +1,11 @@
 package wang.tinycoder.easylinkerapp.module.device.devlist;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +50,8 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
     SmartRefreshLayout mRefreshLayout;
     @BindView(R.id.tv_message)
     TextView mTvMessage;
+    @BindView(R.id.fab_add_device)
+    FloatingActionButton mFabAddDevice;
 
     // 绑定设备的请求码
     private static final int BIND_DEV_REQUEST_CODE = 668;
@@ -55,6 +60,19 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
     private Group mGroup;
     private LinearLayoutManager mLayoutManager;
     private DeviceAdapter mDeviceAdapter;
+    private DeviceAddDialog mDevAddDialog;
+    private DeviceAddDialog.OnActionListener addDeviceActionListener = new DeviceAddDialog.OnActionListener() {
+        @Override
+        public void cancle(DeviceAddDialog instance) {
+            instance.dismiss();
+        }
+
+        @Override
+        public void sure(DeviceAddDialog instance, String deviceName, String deviceDesc, String locationDesc) {
+            SharedPreferences sp = getSharedPreferences(Constants.SP_NAME, Context.MODE_PRIVATE);
+            mPresenter.addDevice(mGroup.getId(), mGroup.getName(), deviceName, deviceDesc, locationDesc, sp.getString(Constants.EXTRA_CITY_LATITUDE, ""), sp.getString(Constants.EXTRA_CITY_LONGITUDE, ""));
+        }
+    };
 
     @Override
     public int getLayoutId() {
@@ -110,7 +128,7 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
         showToast(message);
     }
 
-    @OnClick({R.id.tv_bind, R.id.tv_message})
+    @OnClick({R.id.tv_bind, R.id.tv_message, R.id.fab_add_device})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_bind:
@@ -121,6 +139,13 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
                 break;
             case R.id.tv_message:
                 mPresenter.requestDeviceBygroup(mGroup.getId(), true);
+                break;
+            case R.id.fab_add_device:
+                if (mDevAddDialog == null) {
+                    mDevAddDialog = new DeviceAddDialog();
+                    mDevAddDialog.setActionListener(addDeviceActionListener);
+                }
+                mDevAddDialog.show(getFragmentManager(), "devaddDialog");
                 break;
         }
     }
@@ -253,6 +278,19 @@ public class DevListActivity extends BaseActivity<DevListPresenter> implements D
     @Override
     public void sendCommandError() {
         showToast("指令发送失败！");
+    }
+
+    @Override
+    public void createDeviceSuccess() {
+        if (mDevAddDialog != null && mDevAddDialog.isVisible()) {
+            mDevAddDialog.dismiss();
+            mPresenter.requestDeviceBygroup(mGroup.getId(), true);
+        }
+    }
+
+    @Override
+    public void createDeviceError() {
+        showToast("创建设备失败！");
     }
 
     // 请求完成

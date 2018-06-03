@@ -1,4 +1,4 @@
-package wang.tinycoder.easylinkerapp.module.home.fragment.dev;
+package wang.tinycoder.easylinkerapp.module.device.devlist;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -16,29 +16,27 @@ import android.widget.Toast;
 import com.orhanobut.logger.Logger;
 
 import wang.tinycoder.easylinkerapp.R;
-import wang.tinycoder.easylinkerapp.bean.Group;
 
 /**
- * Progect：EasyLinkerAppNew
- * Package：wang.tinycoder.easylinkerapp.module.home.fragment.dev
- * Desc：添加分组的对话框
+ * Progect：EasyLinkerApp
+ * Package：wang.tinycoder.easylinkerapp.module.device.devlist
+ * Desc：添加设备的对话框
  * Author：TinycoderWang
- * CreateTime：2018/4/21 20:13
+ * CreateTime：2018/6/3 10:04
  */
-public class DevGroupAddDialog extends DialogFragment implements View.OnClickListener {
+public class DeviceAddDialog extends DialogFragment implements View.OnClickListener {
 
     private static final String TAG = "SubjectAnswerDialogFragment";
 
     TextView title;
-    AppCompatEditText groupName;
-    AppCompatEditText groupDesc;
+    AppCompatEditText deviceName;
+    AppCompatEditText deviceDesc;
+    AppCompatEditText locationDesc;
     TextView cancle;
     TextView sure;
 
     // 标题
     private String titleStr;
-    // 群组
-    private Group group;
 
 
     private OnCreatSuccess creeatSuccessListener;
@@ -65,23 +63,16 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         Logger.i(TAG, "onCreateView");
-        View mView = inflater.inflate(R.layout.dialog_dev_group_add, null);
+        View mView = inflater.inflate(R.layout.dialog_device_add, null);
         title = (TextView) mView.findViewById(R.id.tv_title);
-        groupName = (AppCompatEditText) mView.findViewById(R.id.et_group_name);
-        groupDesc = (AppCompatEditText) mView.findViewById(R.id.et_group_desc);
+        deviceName = (AppCompatEditText) mView.findViewById(R.id.et_dev_name);
+        deviceDesc = (AppCompatEditText) mView.findViewById(R.id.et_dev_desc);
+        locationDesc = (AppCompatEditText) mView.findViewById(R.id.et_dev_location);
         cancle = (TextView) mView.findViewById(R.id.tv_cancle);
         sure = (TextView) mView.findViewById(R.id.tv_sure);
 
         // 标题
-        title.setText(TextUtils.isEmpty(titleStr) ? "新增群组" : titleStr);
-
-        // 设置信息
-        if (group != null) {
-            String name = group.getName();
-            groupName.setText(TextUtils.isEmpty(name) ? "" : name);
-            String comment = group.getComment();
-            groupDesc.setText(TextUtils.isEmpty(comment) ? "" : comment);
-        }
+        title.setText(TextUtils.isEmpty(titleStr) ? "添加设备" : titleStr);
 
         // 点击事件
         cancle.setOnClickListener(this);
@@ -116,8 +107,8 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
      *
      * @return
      */
-    public String getGroupName() {
-        return groupName.getText().toString().trim();
+    public String getDeviceName() {
+        return deviceName.getText().toString().trim();
     }
 
 
@@ -126,8 +117,18 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
      *
      * @return
      */
-    public String getGroupDesc() {
-        return groupDesc.getText().toString().trim();
+    public String getDeviceDesc() {
+        return deviceDesc.getText().toString().trim();
+    }
+
+
+    /**
+     * 获取位置描述
+     *
+     * @return
+     */
+    public String getLocationDesc() {
+        return locationDesc.getText().toString().trim();
     }
 
 
@@ -139,25 +140,27 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
                     actionListener.cancle(this);
                     break;
                 case R.id.tv_sure:   // 确定
-                    // 群组名称
-                    String groupName = getGroupName();
-                    // 描述
-                    String groupDesc = getGroupDesc();
+                    // 设备名称
+                    String devName = getDeviceName();
+                    // 设备描述
+                    String devDesc = getDeviceDesc();
+                    // 位置描述
+                    String locationDesc = getLocationDesc();
                     // 非空判断
-                    if (TextUtils.isEmpty(groupName)) {
-                        Toast.makeText(getActivity(), "请输入群组名称", Toast.LENGTH_SHORT).show();
+                    if (TextUtils.isEmpty(devName)) {
+                        Toast.makeText(getActivity(), "请输入设备名称", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (TextUtils.isEmpty(groupDesc)) {
-                        Toast.makeText(getActivity(), "请输入群组备注", Toast.LENGTH_SHORT).show();
+                    if (TextUtils.isEmpty(devDesc)) {
+                        Toast.makeText(getActivity(), "请输入设备备注", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(locationDesc)) {
+                        Toast.makeText(getActivity(), "请输入位置备注", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    String groupId = "";
-                    if (group != null) {
-                        groupId = group.getId();
-                    }
-                    actionListener.sure(this, groupId, groupName, groupDesc);
+                    actionListener.sure(this, devName, devDesc, locationDesc);
                     break;
             }
         }
@@ -169,7 +172,7 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
      * 创建成功回调
      */
     interface OnCreatSuccess {
-        void onCreateSuccess(DevGroupAddDialog instance);
+        void onCreateSuccess(DeviceAddDialog instance);
     }
 
 
@@ -177,17 +180,17 @@ public class DevGroupAddDialog extends DialogFragment implements View.OnClickLis
      * 动作的回调
      */
     interface OnActionListener {
-        void cancle(DevGroupAddDialog instance);
+        void cancle(DeviceAddDialog instance);
 
-        void sure(DevGroupAddDialog instance, String groupId, String groupName, String groupDesc);
+        void sure(DeviceAddDialog instance, String deviceName, String deviceDesc, String locationDesc);
     }
 
-    public Group getGroup() {
-        return group;
-    }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    @Override
+    public void dismiss() {
+        deviceName.setText("");
+        deviceDesc.setText("");
+        locationDesc.setText("");
+        super.dismiss();
     }
-
 }

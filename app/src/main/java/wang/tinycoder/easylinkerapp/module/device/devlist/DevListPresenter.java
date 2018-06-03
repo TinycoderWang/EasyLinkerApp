@@ -272,4 +272,49 @@ public class DevListPresenter extends BasePresenter<DevListContract.View, DevLis
             }
         });
     }
+
+
+    /**
+     * 添加设备
+     *
+     * @param groupId      群组id
+     * @param groupName    群组名称
+     * @param deviceName   设备名称
+     * @param deviceDesc   设备描述
+     * @param locationDesc 位置描述
+     * @param latitude     纬度
+     * @param longitude    经度
+     */
+    public void addDevice(String groupId, String groupName, String deviceName, String deviceDesc, String locationDesc, String latitude, String longitude) {
+        mModel.createADevice(groupId,groupName,deviceName,deviceDesc,locationDesc,latitude,longitude,new Observer<NetResult>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                mCompositeDisposable.add(d);
+            }
+
+            @Override
+            public void onNext(NetResult netResult) {
+                if (netResult != null) {
+                    // 添加成功
+                    if (NetResult.SUCCESS == netResult.getState()) {
+                        mView.createDeviceSuccess();
+                    }
+                    mView.showMessage(netResult.getMessage());
+                } else {
+                    mView.createDeviceError();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Logger.e("%s addDevice error ! MSG : %s", TAG, e.getMessage());
+                mView.createDeviceError();
+            }
+
+            @Override
+            public void onComplete() {
+                Logger.i("%s addDevice onComplete !", TAG);
+            }
+        });
+    }
 }

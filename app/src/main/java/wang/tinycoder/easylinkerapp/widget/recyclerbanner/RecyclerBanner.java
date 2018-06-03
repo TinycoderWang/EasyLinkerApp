@@ -82,9 +82,6 @@ public class RecyclerBanner extends FrameLayout {
             if (msg.what == WHAT_AUTO_PLAY) {
                 if (currentIndex == mLayoutManager.findFirstVisibleItemPosition()) {
                     ++currentIndex;
-//                    if (currentIndex >= bannerSize) {
-//                        currentIndex = 0;
-//                    }
                     mRecyclerView.smoothScrollToPosition(currentIndex);
                     mHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
                     refreshIndicator();
@@ -240,28 +237,22 @@ public class RecyclerBanner extends FrameLayout {
         refreshIndicator();
         setPlaying(true);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dx != 0) {
-                    setPlaying(false);
-                }
-            }
 
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
                 if (newState == SCROLL_STATE_IDLE) {
                     int first = mLayoutManager.findFirstVisibleItemPosition();
                     refreshIndicator(first);
-                    if (newState == SCROLL_STATE_IDLE) {
-                        setPlaying(true);
-                        // banner条目改变的监听
-                        if (mItemChangedListener != null) {
-                            if (bannerSize > 0) {
-                                mItemChangedListener.onItemChanged(first % bannerSize);
-                                Log.d("xxx", "onScrollStateChanged  ---  position : " + (first % bannerSize));
-                            }
+                    currentIndex = first;
+                    // banner条目改变的监听
+                    if (mItemChangedListener != null) {
+                        if (bannerSize > 0) {
+                            mItemChangedListener.onItemChanged(first % bannerSize);
+                            Log.d("xxx", "onScrollStateChanged  ---  position : " + (first % bannerSize));
                         }
                     }
+
                 }
             }
         });
@@ -272,11 +263,15 @@ public class RecyclerBanner extends FrameLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                setPlaying(false);
+                if(isPlaying){
+                    setPlaying(false);
+                }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                setPlaying(true);
+                if(!isPlaying){
+                    setPlaying(true);
+                }
                 break;
         }
         return super.dispatchTouchEvent(ev);

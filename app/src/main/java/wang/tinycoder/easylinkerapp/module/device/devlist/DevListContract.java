@@ -34,6 +34,9 @@ public interface DevListContract {
 
         void sendCommandError();
 
+        void createDeviceSuccess();
+
+        void createDeviceError();
     }
 
     interface Model extends IModel {
@@ -48,6 +51,8 @@ public interface DevListContract {
         void requestDeviceByGroup(String groupId, int page, int count, Observer<NetResult<GroupDevData>> observer);
 
         void sendCommandToDevice(String deviceId, String command, Observer<NetResult> observer);
+
+        void createADevice(String groupId, String groupName, String deviceName, String deviceDesc, String locationDesc, String latitude, String longitude, Observer<NetResult> observer);
     }
 
 }

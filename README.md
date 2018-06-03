@@ -1,4 +1,6 @@
-# EasyLinkerApp
+
+![](http://octklz398.bkt.clouddn.com/easylinker_logo.png)
+
 为 [EasyLinker](https://github.com/wwhai/EasyLinker "EasyLinker") 配套的Android应用！ 
 
 <img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526087192.png"/> <img width="40%" src="http://octklz398.bkt.clouddn.com/Screenshot_1526088281.png"/>

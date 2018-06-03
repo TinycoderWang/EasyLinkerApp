@@ -27,6 +27,7 @@ public class Device implements Serializable {
     private DevLocation location;
     private String id;
     private String describe;
+    private String key;
     private String barCode;
 
     public String getName() {
@@ -75,6 +76,14 @@ public class Device implements Serializable {
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getBarCode() {

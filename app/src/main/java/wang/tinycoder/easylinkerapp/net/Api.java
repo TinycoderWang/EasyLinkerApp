@@ -143,6 +143,15 @@ public interface Api {
                                      @Path("groupId") String groupId);
 
     /**
+     * 创建设备
+     * @param body
+     * @return
+     *
+     */
+    @POST("user/createADevice")
+    Observable<NetResult> createDevice(@Body RequestBody body);
+
+    /**
      * 向设备发送指令
      *
      * @param body
